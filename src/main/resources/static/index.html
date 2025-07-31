@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <title>Stock Display</title>
+<script>
+    setInterval(() => {
+        window.location.reload();
+    }, 10000);
+</script>
+</head>
+
+
+
+<body>
+    <h1>
+        StockItems
+    </h1>
+    <pre id="stockData"> Loading...</pre>
+
+    <script lang="javascript">
+        async function fetchStock() {
+            const response = await fetch('/api/stock/stockShow');
+            const data = await response.json();
+            document.getElementById('stockData').innerText = JSON.stringify(data, null, 2);
+
+        }
+
+        fetchStock();
+        setInterval(fetchStock, 10000);
+    </script>
+</body>
+</html>
+
