@@ -77,14 +77,10 @@ public class stockSystem {
     }
 
     public static Map<String, PickedData> getCurrentStock() {
-        return picked;
+        return Collections.unmodifiableMap(picked);
     }
 
-    public static String returnStockTable() {
-        StringBuilder output = new StringBuilder();
-
-        items.forEach((key, val) -> output.append(key).append("weight: ").append(val.weight).append("Stock: ").append(val.stock).append("\n"));
-        return output.toString();
-
+    public static Map<String, ItemStockWeight> returnStockTable() {
+            return Collections.unmodifiableMap(items);
     }
 }
