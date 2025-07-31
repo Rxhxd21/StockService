@@ -22,7 +22,7 @@ public class HomeController { //class used to send requests to the webroot
     }
 
     @GetMapping("/stocktable")
-    public String getStockTable() {
-        return stockSystem.returnStockTable();
+    public Map<String, PickedData> getStockTable() {
+        return stockSystem.getCurrentStock();
     }
  }

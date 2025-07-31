@@ -85,5 +85,6 @@ public class stockSystem {
 
         items.forEach((key, val) -> output.append(key).append("weight: ").append(val.weight).append("Stock: ").append(val.stock).append("\n"));
         return output.toString();
+
     }
 }
