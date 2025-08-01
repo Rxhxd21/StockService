@@ -90,7 +90,7 @@ public class stockSystem {
     public static Map<String, GetUTCTimeStamp> getUTCtime() {
         Map<String, GetUTCTimeStamp> UTCmap = new HashMap<>();
         UTCmap.put("Last Updated", new GetUTCTimeStamp(0));
-        UTCmap.put("Next update", new GetUTCTimeStamp(300));
+        UTCmap.put("Next update", new GetUTCTimeStamp(10));
         return UTCmap;
     }
 

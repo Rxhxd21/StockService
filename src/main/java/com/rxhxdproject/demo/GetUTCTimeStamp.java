@@ -10,7 +10,7 @@ public class GetUTCTimeStamp {
     }
 
     public long GetUTCTimeStamp2() {
-        return inst + 300;
+        return inst;
     }
 
     public long getTS() {
