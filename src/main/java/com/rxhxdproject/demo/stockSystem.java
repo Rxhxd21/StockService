@@ -21,11 +21,11 @@ public class stockSystem {
     }
 
 
-    public static void InitializeItems() {
-        items.put("Bread Machine ", new ItemStockWeight(100, 15));
-        items.put("Fridge ", new ItemStockWeight(40, 12));
-        items.put("Apple Tree ", new ItemStockWeight(30, 11));
-        items.put("Chicken Barn ", new ItemStockWeight(25, 10));
+    public static void InitializeItems() { //stock map
+        items.put("Bread Machine", new ItemStockWeight(100, 15));
+        items.put("Fridge", new ItemStockWeight(40, 12));
+        items.put("Apple Tree", new ItemStockWeight(30, 11));
+        items.put("Chicken Barn", new ItemStockWeight(25, 10));
         items.put("Cheese Stand", new ItemStockWeight(12, 7));
         items.put("Vending Machine", new ItemStockWeight(10, 6));
         items.put("Candy Machine", new ItemStockWeight(8, 5));
@@ -37,7 +37,7 @@ public class stockSystem {
 
 
     @Scheduled(fixedRate = 300000)
-    public static void generateNewStock(){
+    public static void generateNewStock(){ //stock generating
         choices.clear();
         picked.clear();
 
@@ -89,8 +89,8 @@ public class stockSystem {
 
     public static Map<String, GetUTCTimeStamp> getUTCtime() {
         Map<String, GetUTCTimeStamp> UTCmap = new HashMap<>();
-        UTCmap.put("Last Updated", new GetUTCTimeStamp(0));
-        UTCmap.put("Next update", new GetUTCTimeStamp(300));
+        UTCmap.put("Lastupdate", new GetUTCTimeStamp(0));
+        UTCmap.put("Nextupdate", new GetUTCTimeStamp(300));
         return UTCmap;
     }
 
