@@ -19,8 +19,9 @@ public class HomeController { //class used to send requests to the webroot
     private String appName;
 
     @PostConstruct
-    public void initStock() {
+    public void initStockAndUTC() {
         stockSystem.generateNewStock();
+        stockSystem.getUTCtime();
     }
 
 
