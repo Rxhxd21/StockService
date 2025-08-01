@@ -1,6 +1,7 @@
 package com.rxhxdproject.demo;
 
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +18,15 @@ public class HomeController { //class used to send requests to the webroot
     @Value("${spring.application.name}")
     private String appName;
 
+    @PostConstruct
+    public void initStock() {
+        stockSystem.generateNewStock();
+    }
+
 
     @GetMapping("/stockShow")
     public Map<String, Object> generateStockItems() {
-        stockSystem.generateNewStock();
+
         Map<String, Object> maintable = new HashMap<>();
         maintable.put("Stock", stockSystem.getCurrentStock());
         maintable.put("timestamps", stockSystem.getUTCtime());
