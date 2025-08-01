@@ -13,6 +13,8 @@ public class stockSystem {
     public static ArrayList<String> choices = new ArrayList<>();
     public static Map<String, PickedData> picked = new HashMap<>();
 
+
+
     static { //????
         InitializeItems();
         returnStockTable();
@@ -76,8 +78,20 @@ public class stockSystem {
         }
     }
 
-    public static Map<String, PickedData> getCurrentStock() {
-        return Collections.unmodifiableMap(picked);
+
+    //main table returning hashmaps:
+
+    public static Map<String, Object> getCurrentStock() {
+        Map<String, Object> stocktable = new HashMap<>();
+        stocktable.put("New stock:",picked);
+        return Collections.unmodifiableMap(stocktable);
+    }
+
+    public static Map<String, GetUTCTimeStamp> getUTCtime() {
+        Map<String, GetUTCTimeStamp> UTCmap = new HashMap<>();
+        UTCmap.put("Last Updated", new GetUTCTimeStamp(0));
+        UTCmap.put("Next update", new GetUTCTimeStamp(300));
+        return UTCmap;
     }
 
     public static Map<String, ItemStockWeight> returnStockTable() {
