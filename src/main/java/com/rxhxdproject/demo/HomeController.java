@@ -30,7 +30,7 @@ public class HomeController { //class used to send requests to the webroot
 
         Map<String, Object> maintable = new HashMap<>();
         maintable.put("Stock", stockSystem.getCurrentStock());
-        maintable.put("timestamps", stockSystem.getUTCtime());
+        maintable.put("timestamps", stockSystem.UTCtime().getTS());
         return maintable;
     }
 

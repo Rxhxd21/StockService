@@ -2,6 +2,7 @@ package com.rxhxdproject.demo;
 
 
 import org.springframework.http.converter.json.GsonBuilderUtils;
+import org.springframework.instrument.classloading.glassfish.GlassFishLoadTimeWeaver;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,7 @@ public class stockSystem {
     public static HashMap<String, ItemStockWeight> items = new HashMap<>();
     public static ArrayList<String> choices = new ArrayList<>();
     public static Map<String, PickedData> picked = new HashMap<>();
+    public static GetUTCTimeStamp lastUPD;
 
 
 
@@ -77,8 +79,13 @@ public class stockSystem {
                 }
             }
         }
+
+        lastUPD = new GetUTCTimeStamp(0);
     }
 
+    public static GetUTCTimeStamp UTCtime() {
+        return lastUPD;
+    }
 
     //main table returning hashmaps:
 
@@ -90,8 +97,7 @@ public class stockSystem {
 
     public static Map<String, GetUTCTimeStamp> getUTCtime() {
         Map<String, GetUTCTimeStamp> UTCmap = new HashMap<>();
-        UTCmap.put("Lastupdate", new GetUTCTimeStamp(0));
-        UTCmap.put("Nextupdate", new GetUTCTimeStamp(300));
+        UTCmap.put("Lastupdate", UTCtime());
         return UTCmap;
     }
 
