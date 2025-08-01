@@ -36,7 +36,7 @@ public class stockSystem {
     }
 
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 300000)
     public static void generateNewStock(){
         choices.clear();
         picked.clear();
@@ -90,7 +90,7 @@ public class stockSystem {
     public static Map<String, GetUTCTimeStamp> getUTCtime() {
         Map<String, GetUTCTimeStamp> UTCmap = new HashMap<>();
         UTCmap.put("Last Updated", new GetUTCTimeStamp(0));
-        UTCmap.put("Next update", new GetUTCTimeStamp(10));
+        UTCmap.put("Next update", new GetUTCTimeStamp(300));
         return UTCmap;
     }
 
