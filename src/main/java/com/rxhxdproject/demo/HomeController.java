@@ -37,7 +37,7 @@ public class HomeController { //class used to send requests to the webroot
 //java ignore
     @GetMapping("/stocktable")
     public Map<String, Object> getStockTable() {
-        return stockSystem.getCurrentStock();
+        return stockSystem.returnStockTable();
     }
 
  }

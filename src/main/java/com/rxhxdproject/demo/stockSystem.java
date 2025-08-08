@@ -10,18 +10,17 @@ import java.util.*;
 
 @Component
 public class stockSystem {
-    public static HashMap<String, ItemStockWeight> items = new HashMap<>();
+    public static HashMap<String, ItemStockWeight> items = new HashMap<>(); //main hashmap
     public static ArrayList<String> choices = new ArrayList<>();
-    public static Map<String, PickedData> picked = new HashMap<>();
+    public static Map<String, PickedData> picked = new HashMap<>(); //returning hashmap
     public static GetUTCTimeStamp lastUPD;
 
 
 
-
-    static { //????
+    static {
         InitializeItems();
         returnStockTable();
-    }
+    } //????
 
 
     public static void InitializeItems() { //stock map
@@ -36,11 +35,12 @@ public class stockSystem {
         items.put("Chicken Oven", new ItemStockWeight(3, 5));
         items.put("Pizza Oven",new ItemStockWeight(2, 3));
         items.put("Bee Hive", new ItemStockWeight(1, 1));
+        items.put("Ice Cream Machine", new ItemStockWeight(1, 1));
     }
 
 
     @Scheduled(fixedRate = 300000)
-    public static void generateNewStock(){ //stock generating
+    public static void generateNewStock(){ //stock generating logic
         choices.clear();
         picked.clear();
 
@@ -101,7 +101,7 @@ public class stockSystem {
         return UTCmap;
     }
 
-    public static Map<String, ItemStockWeight> returnStockTable() {
+    public static Map<String, Object> returnStockTable() {
             return Collections.unmodifiableMap(items);
     }
 }
