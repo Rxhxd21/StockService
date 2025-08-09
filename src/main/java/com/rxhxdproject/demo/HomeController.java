@@ -22,17 +22,29 @@ public class HomeController { //class used to send requests to the webroot
     public void initStockAndUTC() {
         stockSystem.generateNewStock();
         stockSystem.getUTCtime();
+        summerStockSystem.InitializeSummerItems();
+        summerStockSystem.generateSummerStock();
     }
 
 
     @GetMapping("/stockShow")
     public Map<String, Object> generateStockItems() {
-
         Map<String, Object> maintable = new HashMap<>();
         maintable.put("Stock", stockSystem.getCurrentStock());
         maintable.put("timestamps", stockSystem.UTCtime().getTS());
         return maintable;
     }
+
+    @GetMapping("/summerstock")
+    public Map<String, Object> generateSS() {
+        Map<String, Object> mainSummerTable = new HashMap<>();
+        mainSummerTable.putAll(summerStockSystem.UPDTSmap());
+        mainSummerTable.putAll(summerStockSystem.getSummerStock());
+        return mainSummerTable;
+    }
+
+
+
 
 //java ignore
     @GetMapping("/stocktable")
