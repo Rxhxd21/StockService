@@ -33,8 +33,8 @@ public class HomeController { //class used to send requests to the webroot
     public Map<String, Object> generateStockItems() {
         Map<String, Object> maintable = new HashMap<>();
         maintable.put("Stock", stockSystem.getCurrentStock());
-        maintable.put("timestamps", stockSystem.UTCtime().getTS());
-        maintable.put("StockID:", stockSystem.ID.getLastID());
+        maintable.put("LastUpdated", stockSystem.UTCtime().getTS());
+        maintable.put("ShopID", stockSystem.ShopID.getLastID());
         return maintable;
     }
 
@@ -43,7 +43,7 @@ public class HomeController { //class used to send requests to the webroot
         Map<String, Object> mainSummerTable = new HashMap<>();
         mainSummerTable.putAll(summerStockSystem.UPDTSmap());
         mainSummerTable.putAll(summerStockSystem.getSummerStock());
-        mainSummerTable.put("SummerStockID:", summerStockSystem.ID2.getLastID());
+        mainSummerTable.put("ShopID", summerStockSystem.ID2.getLastID());
         return mainSummerTable;
     }
 

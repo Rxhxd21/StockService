@@ -14,8 +14,8 @@ public class stockSystem {
     public static HashMap<String, ItemStockWeight> items = new HashMap<>(); //main hashmap
     public static ArrayList<String> choices = new ArrayList<>();
     public static Map<String, PickedData> picked = new HashMap<>(); //returning hashmap
-    public static GetUTCTimeStamp lastUPD = new GetUTCTimeStamp(0);
-    public static IDincrement ID = new IDincrement();
+    public static GetUTCTimeStamp LastUpdate = new GetUTCTimeStamp(0);
+    public static IDincrement ShopID = new IDincrement();
     public static boolean isFirstRun = true;
 
 
@@ -89,12 +89,12 @@ public class stockSystem {
                 }
             }
         }
-        lastUPD = new GetUTCTimeStamp(0);
-        ID.idINC();
+        LastUpdate = new GetUTCTimeStamp(0);
+        ShopID.idINC();
     }
 
     public static GetUTCTimeStamp UTCtime() {
-        return lastUPD;
+        return LastUpdate;
     }
 
     //main table returning hashmaps:
@@ -107,7 +107,7 @@ public class stockSystem {
 
     public static Map<String, GetUTCTimeStamp> getUTCtime() {
         Map<String, GetUTCTimeStamp> UTCmap = new HashMap<>();
-        UTCmap.put("Lastupdate", UTCtime());
+        UTCmap.put("LastUpdated", UTCtime());
         return UTCmap;
     }
 
