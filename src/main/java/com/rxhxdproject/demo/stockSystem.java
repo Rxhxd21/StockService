@@ -41,7 +41,7 @@ public class stockSystem {
     }
 
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 300000)
     public static void generateNewStock(){ //stock generating logic
 
         if (isFirstRun) {

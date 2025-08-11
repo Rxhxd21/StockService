@@ -21,7 +21,7 @@ public class summerStockSystem {
         summeritems.put("Ice Cream Truck", new ItemStockWeight2(10, 1));
     }
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(cron = "0 0 * * * *")
     public static void generateSummerStock() {
         choises.clear();
         picked.clear();
