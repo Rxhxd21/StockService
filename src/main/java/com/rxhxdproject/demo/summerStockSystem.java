@@ -15,6 +15,12 @@ public class summerStockSystem {
     public static IDincrement ID2 = new IDincrement();
 
 
+    static {
+        InitializeSummerItems();  // initialize summeritems map on class load
+        generateSummerStock();    // generate stock once on startup so data is ready
+    }
+
+
     public static void InitializeSummerItems() {
         summeritems.put("Cooler Box", new ItemStockWeight2(100, 5));
         summeritems.put("Watermelon Plant", new ItemStockWeight2(50, 2));
@@ -23,6 +29,9 @@ public class summerStockSystem {
 
     @Scheduled(cron = "0 0 * * * *")
     public static void generateSummerStock() {
+
+
+
         choises.clear();
         picked.clear();
 
