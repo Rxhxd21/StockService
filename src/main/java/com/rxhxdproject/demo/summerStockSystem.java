@@ -12,6 +12,7 @@ public class summerStockSystem {
     public static ArrayList<String> choises = new ArrayList<>();
     public static Map<String, PickedData2> picked = new HashMap<>();
     public static GetUTCTS2 currentTime;
+    public static IDincrement ID2 = new IDincrement();
 
 
     public static void InitializeSummerItems() {
@@ -20,7 +21,7 @@ public class summerStockSystem {
         summeritems.put("Ice Cream Truck", new ItemStockWeight2(10, 1));
     }
 
-    @Scheduled(cron = "0 0 * * * *")
+    @Scheduled(fixedRate = 10000)
     public static void generateSummerStock() {
         choises.clear();
         picked.clear();
@@ -54,6 +55,7 @@ public class summerStockSystem {
             }
         }
         currentTime = new GetUTCTS2(0);
+        ID2.idINC();
     }
 
     public static GetUTCTS2 getUPDtimestamp() {

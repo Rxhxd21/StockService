@@ -18,12 +18,14 @@ public class HomeController { //class used to send requests to the webroot
     @Value("${spring.application.name}")
     private String appName;
 
+
+
     @PostConstruct
     public void initStockAndUTC() {
-        stockSystem.generateNewStock();
+        stockSystem.InitializeItems();
         stockSystem.getUTCtime();
         summerStockSystem.InitializeSummerItems();
-        summerStockSystem.generateSummerStock();
+        stockSystem.generateNewStock();
     }
 
 
@@ -32,6 +34,7 @@ public class HomeController { //class used to send requests to the webroot
         Map<String, Object> maintable = new HashMap<>();
         maintable.put("Stock", stockSystem.getCurrentStock());
         maintable.put("timestamps", stockSystem.UTCtime().getTS());
+        maintable.put("StockID:", stockSystem.ID.getLastID());
         return maintable;
     }
 
@@ -40,6 +43,7 @@ public class HomeController { //class used to send requests to the webroot
         Map<String, Object> mainSummerTable = new HashMap<>();
         mainSummerTable.putAll(summerStockSystem.UPDTSmap());
         mainSummerTable.putAll(summerStockSystem.getSummerStock());
+        mainSummerTable.put("SummerStockID:", summerStockSystem.ID2.getLastID());
         return mainSummerTable;
     }
 

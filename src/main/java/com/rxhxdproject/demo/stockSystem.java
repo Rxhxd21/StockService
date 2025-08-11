@@ -5,6 +5,7 @@ import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.instrument.classloading.glassfish.GlassFishLoadTimeWeaver;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.yaml.snakeyaml.events.Event;
 
 import java.util.*;
 
@@ -13,8 +14,9 @@ public class stockSystem {
     public static HashMap<String, ItemStockWeight> items = new HashMap<>(); //main hashmap
     public static ArrayList<String> choices = new ArrayList<>();
     public static Map<String, PickedData> picked = new HashMap<>(); //returning hashmap
-    public static GetUTCTimeStamp lastUPD;
-
+    public static GetUTCTimeStamp lastUPD = new GetUTCTimeStamp(0);
+    public static IDincrement ID = new IDincrement();
+    public static boolean isFirstRun = true;
 
 
     static {
@@ -41,6 +43,12 @@ public class stockSystem {
 
     @Scheduled(fixedRate = 300000)
     public static void generateNewStock(){ //stock generating logic
+
+        if (isFirstRun) {
+            isFirstRun = false;
+            System.out.println("Skipping first scheduled run to avoid double increment");
+            return;
+        }
         choices.clear();
         picked.clear();
 
@@ -49,6 +57,7 @@ public class stockSystem {
                 choices.add(entry.getKey());
             }
         }
+
 
 
         Collections.shuffle(choices);
@@ -76,11 +85,12 @@ public class stockSystem {
                     picked.put(spawnerName, new PickedData(amount));
                     used.add(spawnerName);
                     pickedCount += 1;
+
                 }
             }
         }
-
         lastUPD = new GetUTCTimeStamp(0);
+        ID.idINC();
     }
 
     public static GetUTCTimeStamp UTCtime() {
