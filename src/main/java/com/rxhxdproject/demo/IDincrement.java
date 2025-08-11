@@ -3,7 +3,7 @@ package com.rxhxdproject.demo;
 import java.util.ArrayList;
 
 public class IDincrement {
-    private static int counter = -2;
+    private int counter = -2;
 
     public int idINC() {
         counter++;
